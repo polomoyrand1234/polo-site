@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Polo — Hub (YouTube & TikTok)</title>
+
+  <!-- Tu peux garder ton styles.css si tu veux, mais l'index ci-dessous est déjà stylé tout seul -->
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+
+  <style>
+    /* ============ Joyful Theme (en plus de styles.css) ============ */
+    :root{
+      --joy-bg1: #fff7ed;   /* peach */
+      --joy-bg2: #ecfeff;   /* light cyan */
+      --joy-bg3: #f5f3ff;   /* light violet */
+      --joy-ink: #0f172a;   /* slate */
+      --joy-muted: rgba(15,23,42,.70);
+
+      --joy-a: #ff6b6b;     /* coral */
+      --joy-b: #ffd93d;     /* sun */
+      --joy-c: #6ee7ff;     /* sky */
+      --joy-d: #a78bfa;     /* violet */
+      --joy-e: #34d399;     /* mint */
+    }
+
+    body.theme-menu{
+      color: var(--joy-ink);
+      background:
+        radial-gradient(900px 600px at 15% 15%, rgba(255,107,107,.22), transparent 55%),
+        radial-gradient(900px 650px at 85% 15%, rgba(255,217,61,.20), transparent 55%),
+        radial-gradient(1000px 700px at 20% 85%, rgba(110,231,255,.18), transparent 60%),
+        radial-gradient(1000px 700px at 85% 85%, rgba(167,139,250,.16), transparent 60%),
+        linear-gradient(135deg, var(--joy-bg1), var(--joy-bg2), var(--joy-bg3));
+    }
+
+    /* Confettis légers */
+    .confetti{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .65;
+      background:
+        radial-gradient(6px 6px at 12% 22%, rgba(255,107,107,.55), transparent 60%),
+        radial-gradient(6px 6px at 30% 12%, rgba(255,217,61,.55), transparent 60%),
+        radial-gradient(6px 6px at 52% 18%, rgba(110,231,255,.55), transparent 60%),
+        radial-gradient(6px 6px at 72% 10%, rgba(52,211,153,.50), transparent 60%),
+        radial-gradient(6px 6px at 88% 26%, rgba(167,139,250,.55), transparent 60%),
+
+        radial-gradient(7px 7px at 16% 72%, rgba(255,217,61,.45), transparent 60%),
+        radial-gradient(7px 7px at 36% 82%, rgba(167,139,250,.45), transparent 60%),
+        radial-gradient(7px 7px at 62% 74%, rgba(52,211,153,.42), transparent 60%),
+        radial-gradient(7px 7px at 82% 86%, rgba(255,107,107,.42), transparent 60%),
+        radial-gradient(7px 7px at 92% 70%, rgba(110,231,255,.42), transparent 60%);
+      filter: blur(.2px);
+    }
+
+    /* Topbar plus clair */
+    .topbar{
+      background: rgba(255,255,255,.70) !important;
+      border-bottom: 1px solid rgba(15,23,42,.08) !important;
+    }
+    .toplink{
+      color: rgba(15,23,42,.82) !important;
+      background: rgba(255,255,255,.65) !important;
+      border: 1px solid rgba(15,23,42,.10) !important;
+    }
+    .toplink:hover{ transform: translateY(-1px); }
+    .brand__dot{
+      background: linear-gradient(90deg, var(--joy-a), var(--joy-b), var(--joy-c), var(--joy-d), var(--joy-e)) !important;
+      box-shadow: 0 10px 30px rgba(255,107,107,.18) !important;
+    }
+    .muted{ color: var(--joy-muted) !important; }
+
+    /* Carte principale : verre blanc */
+    .glass{
+      background: rgba(255,255,255,.72) !important;
+      border: 1px solid rgba(15,23,42,.10) !important;
+      box-shadow: 0 18px 60px rgba(15,23,42,.10) !important;
+      backdrop-filter: blur(12px);
+    }
+
+    /* Accent texte en arc-en-ciel */
+    .accent{
+      background: linear-gradient(90deg, var(--joy-a), var(--joy-b), var(--joy-c), var(--joy-d), var(--joy-e));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Pills joyeuses */
+    .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .pill{
+      padding:8px 12px;border-radius:999px;
+      font-weight:900;font-size:.92rem;
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.75);
+    }
+    .pill--dev{ box-shadow: 0 10px 25px rgba(110,231,255,.18); }
+    .pill--edit{ box-shadow: 0 10px 25px rgba(167,139,250,.16); }
+    .pill--sport{ box-shadow: 0 10px 25px rgba(52,211,153,.16); }
+
+    /* Bubble pop */
+    .bubble{
+      background: rgba(255,255,255,.85) !important;
+      border: 1px solid rgba(15,23,42,.10) !important;
+    }
+    .bubble__icon{
+      border: 1px solid rgba(15,23,42,.10) !important;
+      color: rgba(15,23,42,.85);
+      font-weight: 1000;
+    }
+    .bubble--yt .bubble__icon{
+      background: linear-gradient(135deg, rgba(255,107,107,.35), rgba(255,217,61,.20)) !important;
+    }
+    .bubble--tt .bubble__icon{
+      background: linear-gradient(135deg, rgba(110,231,255,.28), rgba(167,139,250,.22), rgba(255,107,107,.18)) !important;
+    }
+
+    /* Mini boxes */
+    .mini{
+      background: rgba(255,255,255,.78) !important;
+      border: 1px solid rgba(15,23,42,.10) !important;
+    }
+    .linklist a{
+      background: rgba(255,255,255,.82) !important;
+      border: 1px solid rgba(15,23,42,.10) !important;
+      color: rgba(15,23,42,.88) !important;
+    }
+
+    /* “hero card” fun */
+    .fun-card{
+      padding: 14px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,
+        rgba(255,107,107,.18),
+        rgba(255,217,61,.20),
+        rgba(110,231,255,.18),
+        rgba(167,139,250,.16)
+      );
+      border: 1px solid rgba(15,23,42,.10);
+    }
+
+    .profile{
+      padding: 16px;
+      border-radius: 18px;
+    }
+    .profile__top{display:flex;align-items:center;gap:14px}
+    .profile__name{font-weight:1000;font-size:1.15rem;letter-spacing:.2px}
+    .avatar{
+      width: 54px; height: 54px;
+      border-radius: 16px;
+      display: grid; place-items: center;
+      font-weight: 1000;
+      color: rgba(15,23,42,.92);
+      background: linear-gradient(135deg, rgba(255,217,61,.35), rgba(110,231,255,.25), rgba(167,139,250,.22));
+      border: 1px solid rgba(15,23,42,.10);
+    }
+
+    .stats{display:grid;gap:10px;margin-top:14px}
+    .stat{
+      display:flex;gap:12px;align-items:center;
+      padding:10px 12px;border-radius:14px;
+      background: rgba(255,255,255,.80);
+      border: 1px solid rgba(15,23,42,.10);
+    }
+    .stat__n{font-size:1.05rem}
+    .stat__t{color: rgba(15,23,42,.80); font-weight:800; font-size:.96rem}
+
+    .cta-note{
+      margin: 14px 0 18px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px dashed rgba(15,23,42,.18);
+      background: rgba(255,255,255,.72);
+    }
+
+    @media (max-width: 920px){
+      .bubble-row{ grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+
+<body class="theme-menu">
+  <div class="confetti" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand__dot"></span>
+      <span class="brand__text">Hub</span>
+    </a>
+    <nav class="topbar__nav">
+      <a class="toplink" href="youtube.html">YouTube</a>
+      <a class="toplink" href="tiktok.html">TikTok</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero glass">
+      <!-- LEFT -->
+      <div class="hero__left">
+        <div class="pill-row">
+          <span class="pill pill--dev">💻 Code</span>
+          <span class="pill pill--edit">🎬 Vidéos</span>
+          <span class="pill pill--sport">🏃 Sport</span>
+        </div>
+
+        <h1>Salut, moi c’est <span class="accent">Polo</span> 👋</h1>
+
+        <div class="fun-card">
+          <p class="lead" style="margin:0;">
+		  J’ai 17 ans, et je suis à fond dans l’informatique et la création. Ce que j’aime le plus, c’est construire :
+		  un site, un petit projet, une idée que j’ai en tête… puis la rendre réelle avec du code.
+		  Je travaille surtout en HTML, CSS et JavaScript, et je m’amuse à faire des pages propres, colorées,
+		  et agréables à utiliser. J’adore aussi apprendre en testant : je change un détail, je vois le résultat,
+		  je corrige, j’améliore — c’est comme ça que je progresse.
+		  <br><br>
+		  À côté, je fais des vidéos sur YouTube et TikTok, souvent en format court : j’aligne plusieurs images,
+		  j’ajoute des transitions, une musique, des sous-titres… et j’essaie de créer un style reconnaissable.
+		  Pour moi, montage + créativité + régularité = la meilleure combo pour évoluer.
+		  <br><br>
+		  Et le sport, c’est mon “boost” : ça me donne de l’énergie, de la discipline, et ça m’aide à garder un bon rythme
+		  dans tout ce que je fais. Bref : je code, je crée, je m’améliore, et je m’éclate.
+          </p>
+        </div>
+
+        <div class="cta-note">
+          <p class="muted" style="margin:0;">
+            Clique sur une bulle pour voir la page dédiée (avec le bouton vers ma chaîne).
+            Tu peux aussi ajouter des playlists et liens bonus dans le CSV.
+          </p>
+        </div>
+
+        <div class="section" style="border-top:none; padding-top:0;">
+          <h2 class="h2">Playlists / Liens utiles</h2>
+          <p class="muted">Ajoute des lignes <code>playlist</code> dans <code>links.csv</code> et ça s’affichera ici.</p>
+          <div class="chips" id="playlistChips"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="hero__right">
+        <div class="profile glass">
+          <div class="profile__top">
+            <div class="avatar" aria-hidden="true"><span>17</span></div>
+            <div>
+              <div class="profile__name">Polo</div>
+              <div class="muted">Creator & Dev</div>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><div class="stat__n">✨</div><div class="stat__t">Style fun & clean</div></div>
+            <div class="stat"><div class="stat__n">🎯</div><div class="stat__t">Progression à chaque post</div></div>
+            <div class="stat"><div class="stat__n">⚡</div><div class="stat__t">Shorts / edits rapides</div></div>
+          </div>
+        </div>
+
+        <div class="bubble-row">
+          <a class="bubble bubble--yt" href="youtube.html" aria-label="Aller vers la page YouTube">
+            <span class="bubble__icon">▶</span>
+            <span class="bubble__text">
+              <span class="bubble__title">YouTube</span>
+              <span class="bubble__sub">Chaîne + playlists</span>
+            </span>
+          </a>
+
+          <a class="bubble bubble--tt" href="tiktok.html" aria-label="Aller vers la page TikTok">
+            <span class="bubble__icon">♪</span>
+            <span class="bubble__text">
+              <span class="bubble__title">TikTok</span>
+              <span class="bubble__sub">Shorts & edits</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="mini glass">
+          <h3 class="h3">Liens rapides</h3>
+          <ul class="linklist" id="quickLinks"></ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="muted">© <span id="year"></span> — Fait avec ❤️ et du code.</span>
+    </footer>
+  </main>
+</body>
+</html>

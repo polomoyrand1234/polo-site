@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ma chaîne YouTube — polo life</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+
+  <style>
+    /* Harmonisation avec le menu (joyeux) + accent YouTube */
+    :root{
+      --joy1:#fff7ed; --joy2:#ecfeff; --joy3:#f5f3ff;
+      --ink:#0f172a; --muted:rgba(15,23,42,.72);
+      --yt:#ff0033;
+      --glassW: rgba(255,255,255,.78);
+      --strokeW: rgba(15,23,42,.10);
+    }
+    body.theme-youtube{
+      color: var(--ink);
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(255,0,51,.18), transparent 55%),
+        radial-gradient(900px 650px at 85% 12%, rgba(255,217,61,.18), transparent 55%),
+        radial-gradient(1000px 720px at 20% 90%, rgba(110,231,255,.16), transparent 60%),
+        linear-gradient(135deg, var(--joy1), var(--joy2), var(--joy3));
+    }
+    .topbar{ background: rgba(255,255,255,.72)!important; border-bottom:1px solid var(--strokeW)!important; }
+    .toplink{ color: rgba(15,23,42,.85)!important; background: rgba(255,255,255,.75)!important; border:1px solid var(--strokeW)!important; }
+    .glass{ background: var(--glassW)!important; border:1px solid var(--strokeW)!important; box-shadow: 0 18px 60px rgba(15,23,42,.10)!important; }
+    .muted{ color: var(--muted)!important; }
+
+    .heroBanner{
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--strokeW);
+      background: linear-gradient(135deg, rgba(255,0,51,.16), rgba(255,217,61,.18), rgba(255,255,255,.55));
+      margin-bottom: 14px;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border-radius:999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--strokeW);
+      font-weight: 900;
+    }
+    .badgeDot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--yt);
+      box-shadow: 0 8px 30px rgba(255,0,51,.22);
+    }
+
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:start;
+    }
+    @media (max-width: 920px){ .grid{ grid-template-columns:1fr; } }
+
+    .kpi{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 700px){ .kpi{ grid-template-columns:1fr; } }
+
+    .kpiCard{
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--strokeW);
+    }
+    .kpiN{ font-weight:1000; font-size:1.15rem; }
+    .kpiT{ color: var(--muted); font-weight:800; margin-top:4px; }
+
+    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 12px; }
+    .btnPrimary{
+      display:inline-flex; justify-content:center; align-items:center;
+      padding:12px 16px; border-radius:14px;
+      font-weight: 1000;
+      border: 1px solid rgba(255,0,51,.25);
+      background: linear-gradient(90deg, rgba(255,0,51,.92), rgba(255,120,120,.70));
+      color: #16060a;
+    }
+    .btnGhost{
+      display:inline-flex; justify-content:center; align-items:center;
+      padding:12px 16px; border-radius:14px;
+      font-weight: 900;
+      border: 1px solid var(--strokeW);
+      background: rgba(255,255,255,.78);
+      color: rgba(15,23,42,.90);
+    }
+    .section{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(15,23,42,.10);
+    }
+
+    .chipsLocal{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .chipLocal{
+      padding:10px 12px; border-radius:999px;
+      background: rgba(255,255,255,.80);
+      border: 1px solid var(--strokeW);
+      font-weight: 900;
+    }
+
+    .videos{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+    @media (max-width: 900px){ .videos{ grid-template-columns:1fr; } }
+    .videoCard{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid var(--strokeW);
+      background: rgba(255,255,255,.86);
+    }
+    .videoCard iframe{ width:100%; aspect-ratio: 16/9; border:0; display:block; }
+    .videoMeta{ padding:10px 12px; }
+    .videoMeta b{ display:block; }
+    .videoMeta small{ color: var(--muted); font-weight:800; }
+  </style>
+</head>
+
+<body class="theme-youtube">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand__dot"></span>
+      <span class="brand__text">Retour</span>
+    </a>
+    <nav class="topbar__nav">
+      <a class="toplink is-active" href="youtube.html">YouTube</a>
+      <a class="toplink" href="tiktok.html">TikTok</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="glass" style="padding:18px;">
+      <div class="heroBanner">
+        <span class="badge"><span class="badgeDot"></span> YouTube — @pololife504</span>
+        <h1 class="title" style="margin:10px 0 6px;">polo life 🎬</h1>
+        <p class="lead" style="margin:0;">
+          Une chaîne YouTube où je fais principalement du <b>Brawl Stars</b> et aussi un peu d’<b>edits musicaux</b>.
+        </p>
+      </div>
+
+      <div class="grid">
+        <!-- LEFT -->
+        <div>
+          <div class="kpi">
+            <div class="kpiCard">
+              <div class="kpiN">Shorts + vidéos</div>
+              <div class="kpiT">Formats rapides & réguliers</div>
+            </div>
+            <div class="kpiCard">
+              <div class="kpiN">Gaming</div>
+              <div class="kpiT">Brawl Stars (focus)</div>
+            </div>
+            <div class="kpiCard">
+              <div class="kpiN">Edits</div>
+              <div class="kpiT">Musique + sous-titres</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="h2">Ce que tu trouveras sur ma chaîne</h2>
+            <p class="muted" style="margin:6px 0 0;">
+              • Des séries “progression” (paliers, tryhard, défis) • Des clips/POV • Des edits musicaux.
+              Je bosse le rythme, les transitions et un montage propre.
+            </p>
+
+            <div class="chipsLocal">
+              <span class="chipLocal">🔥 Brawl Stars</span>
+              <span class="chipLocal">⚡ Shorts</span>
+              <span class="chipLocal">🎧 Edits musicaux</span>
+              <span class="chipLocal">🧠 Progression</span>
+            </div>
+
+            <div class="ctaRow">
+              <a class="btnPrimary"
+                 href="https://youtube.com/@pololife504?si=MZLN4FWSgBvzlExA"
+                 target="_blank" rel="noopener">
+                Ouvrir ma chaîne YouTube
+              </a>
+              <a class="btnGhost" href="index.html">Revenir au menu</a>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="h2">Extraits (Shorts)</h2>
+            <p class="muted" style="margin:6px 0 0;">
+              Petit aperçu — si tu veux, je remplace ces vidéos par celles que tu préfères (tu me donnes 3 liens).
+            </p>
+
+            <div class="videos">
+              <div class="videoCard">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/HM45GpMYyfY"
+                  title="Short YouTube 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+                <div class="videoMeta">
+                  <b>Edit / rap</b>
+                  <small>Extrait</small>
+                </div>
+              </div>
+
+              <div class="videoCard">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/ie8eI8ADQJM"
+                  title="Short YouTube 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+                <div class="videoMeta">
+                  <b>Brawl Stars (paliers)</b>
+                  <small>Extrait</small>
+                </div>
+              </div>
+
+              <div class="videoCard">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/e247RsxPM0A"
+                  title="Short YouTube 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+                <div class="videoMeta">
+                  <b>POV / edit</b>
+                  <small>Extrait</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="h2">Playlists (optionnel)</h2>
+            <p class="muted">Si tu ajoutes des lignes <code>playlist</code> dans <code>links.csv</code>, elles s’affichent ici.</p>
+            <div class="chips" id="youtubePlaylists"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <aside class="glass" style="padding:14px;">
+          <h3 class="h3">Pourquoi t’abonner ?</h3>
+          <ul class="muted" style="margin:8px 0 0; padding-left:18px; line-height:1.6;">
+            <li>Des formats courts, dynamiques et faciles à regarder</li>
+            <li>Du gaming Brawl Stars + des edits musicaux</li>
+            <li>Une progression visible (défis, séries, améliorations)</li>
+          </ul>
+
+          <div class="section">
+            <h3 class="h3">Liens rapides</h3>
+            <ul class="linklist" id="quickLinks"></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
